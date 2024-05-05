@@ -39,3 +39,9 @@ ALTER TABLE user
 ADD created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 ADD updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
+INSERT INTO buku (judul, penulis, penerbit, tahun_terbit, isbn) VALUES
+('Harry Potter and the Philosopher''s Stone', 'J.K. Rowling', 'Bloomsbury Publishing', 1997, '9780747532743'),
+('To Kill a Mockingbird', 'Harper Lee', 'J.B. Lippincott & Co.', 1960, '9780061120084'),
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Charles Scribner''s Sons', 1925, '9780743273565'),
+('1984', 'George Orwell', 'Secker & Warburg', 1949, '9780451524935'),
+('The Catcher in the Rye', 'J.D. Salinger', 'Little, Brown and Company', 1951, '9780316769488');

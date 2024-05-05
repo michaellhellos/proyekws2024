@@ -1,7 +1,7 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/sequelize');
 const Buku = require('./buku');
-const Anggota = require('./user'); // Pastikan Anda memiliki model Anggota
+const Anggota = require('./user');
 
 class ReviewBuku extends Model {}
 
@@ -29,7 +29,17 @@ ReviewBuku.init({
   },
   rating: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      min: {
+        args: 1,
+        msg: 'Rating harus lebih besar dari atau sama dengan 1'
+      },
+      max: {
+        args: 5,
+        msg: 'Rating harus kurang dari atau sama dengan 5'
+      }
+    }
   },
   komentar: {
     type: DataTypes.TEXT
@@ -41,7 +51,8 @@ ReviewBuku.init({
 }, {
   sequelize,
   modelName: 'ReviewBuku',
-  tableName: 'review_buku'
+  tableName: 'review_buku',
+  timestamps: true // Menggunakan timestamps
 });
 
 module.exports = ReviewBuku;
